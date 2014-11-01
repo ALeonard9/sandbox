@@ -7,8 +7,8 @@ include 'connectToDB.php';
 echo "<!DOCTYPE html>
 <html lang='en'>
 <head>
-	<link rel='stylesheet' type='text/css' href='mystyle.css'>
-	<title id="pageTitle">LeoNine Studios</title>
+        <link rel='stylesheet' type='text/css' href='mystyle.css' />
+        <title id='pageTitle'>LeoNine Studios</title>
 <font>";
 
 $betID = $_GET['betID'];
