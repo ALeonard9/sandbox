@@ -6,6 +6,7 @@ echo "<!DOCTYPE html>
 <html lang='en'>
 <head>
         <link rel='stylesheet' type='text/css' href='mystyle.css'>
+        <title id="pageTitle">LeoNine Studios</title>
 </head>
 </html>";
 
