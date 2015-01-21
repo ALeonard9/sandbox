@@ -5,7 +5,7 @@ license          'All rights reserved'
 description      'Installs/Configures Betting'
 long_description 'Installs/Configures Betting'
 
-version          '0.8.0'
+version          '1.0.1'
 
 depends "apache2"
 
