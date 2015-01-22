@@ -62,11 +62,9 @@ bash "install_mysql" do
 end
 
 service "apache2" do
-  action [:enable, :start]
-	supports :restart => true
+  action :restart
 end
 
 apache_site "default" do
 	enable true
-  notifies :restart, "service[apache2]"
 end
