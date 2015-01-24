@@ -17,7 +17,7 @@ if ($_SESSION['username'])
                 {
                 echo "<br><table><tr><td><button  onclick=location.href='betting.php'>Betting Game</button></td>";
                 echo "<td><button style='background-color:#FFFFFF;color:#20416c;height:180px;width:450px;font-size:50pt;' onclick=location.href='betting.php'>TV</button></td></tr>";
-                echo "<tr><td><button style='background-color:#FFFFFF;color:#20416c;height:180px;width:450px;font-size:50pt;' onclick=location.href='betting.php'>Video Games</button></td>";
+                echo "<tr><td><button style='background-color:#FFFFFF;color:#20416c;height:180px;width:450px;font-size:50pt;' onclick=location.href='videogame.php'>Video Games</button></td>";
                 echo "<td><button style='background-color:#FFFFFF;color:#20416c;height:180px;width:450px;font-size:50pt;' onclick=location.href='betting.php'>Movies</button></td></tr>";
         }
         if ($_SESSION['usergroup']=="User")
@@ -26,3 +26,4 @@ if ($_SESSION['username'])
 else
         die("You must login");
 ?>
+ 
