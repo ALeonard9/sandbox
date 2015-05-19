@@ -1,8 +1,8 @@
 ---
 driver:
   name: ec2
-  aws_access_key_id: AKIAIRX7DMYZYGJDX67Q
-  aws_secret_access_key: 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
+  aws_access_key_id: bad
+  aws_secret_access_key: bad
   aws_ssh_key_id: Key
   ssh_key: C:\Users\Adam\OneDrive\Tech\Key.pem
   security_group_ids: ["sg-32fc7b57"]
