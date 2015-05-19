@@ -2,12 +2,12 @@
 
 session_start();
 
-include 'connectToDB.php';
+include '../connectToDB.php';
 
 echo "<!DOCTYPE html>
 <html lang='en'>
 <head>
-        <link rel='stylesheet' type='text/css' href='mystyle.css' />
+        <link rel='stylesheet' type='text/css' href='../responsive.css' />
         <title id='pageTitle'>LeoNine Studios</title>
 <font>";
 
@@ -15,9 +15,9 @@ $betID = $_GET['betID'];
 
 $sql = "SELECT * FROM bet.history where betID=" . $betID;
 
-echo "<br><button onclick=location.href='updatewinner.php?betID=".$betID."&winner=Adam'>Adam Wins!</button>";
-echo "<button onclick=location.href='updatewinner.php?betID=".$betID."&winner=Soumya'>Soumya Wins!</button>";
-echo "<button onclick=location.href='delete.php?betID=".$betID."'>Delete Bet</button>";
+echo "<br><button class='compact' onclick=location.href='updatewinner.php?betID=".$betID."&winner=Adam'>Adam Wins!</button>";
+echo "<button class='compact' onclick=location.href='updatewinner.php?betID=".$betID."&winner=Soumya'>Soumya Wins!</button>";
+echo "<br><button class='compact' onclick=location.href='delete.php?betID=".$betID."'>Delete Bet</button>";
 
 
 if ($_SESSION['username'])
@@ -25,8 +25,6 @@ if ($_SESSION['username'])
 	$query = $db->query($sql);
 	foreach($query as $item){
 	echo"
-	<!DOCTYPE html>
-	<html>
 	<form action='updatebet.php' method='POST'>
 	<input type='hidden' name='id' value='".$item['betID']."'>
 	<table>

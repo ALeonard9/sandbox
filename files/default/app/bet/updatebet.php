@@ -2,7 +2,7 @@
 
 session_start();
 
-include 'connectToDB.php';
+include '../connectToDB.php';
 
 $betID = $_POST['id'];
 $betDescription = $_POST['description'];
