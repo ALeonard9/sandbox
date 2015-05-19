@@ -2,7 +2,7 @@
 
 session_start();
 
-include 'connectToDB.php';
+include '../connectToDB.php';
 
 $type = $_GET['type'];
 

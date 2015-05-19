@@ -2,12 +2,12 @@
 
 session_start();
 
-include 'connectToDB.php';
+include '../connectToDB.php';
 
 echo "<!DOCTYPE html>
 <html lang='en'>
 <head>
-        <link rel='stylesheet' type='text/css' href='mystyle.css' />
+        <link rel='stylesheet' type='text/css' href='../responsive.css' />
         <title id='pageTitle'>LeoNine Studios</title>
 <font>";
 
@@ -40,9 +40,9 @@ if ($_SESSION['username'])
                 }
         #echo '<pre>', print_r($queryopen), '</pre>';
         echo "<h1>".$intro.": $".$dbbalance."</h1>";
-        echo "<br><button onclick=location.href='quickbet.php?type=fart'>Quick Win S</button>";
-        echo "<button onclick=location.href='quickbet.php?type=pick'>Quick Win A</button>";
-        echo "<button onclick=location.href='newbet.php'>New Bet</button>";
+        echo "<br><button class='compact' onclick=location.href='quickbet.php?type=fart'>Quick Win S</button>";
+        echo "<button class='compact' onclick=location.href='quickbet.php?type=pick'>Quick Win A</button>";
+        echo "<br><button class='compact' onclick=location.href='newbet.php'>New Bet</button>";
         echo "<br><h3>Open Bets</h3>";
         echo "<!DOCTYPE html>";
         echo "<html>";
