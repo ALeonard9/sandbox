@@ -25,7 +25,7 @@ if ($_SESSION['username'])
                 // echo "<tr'><td><button class='compact' onclick=location.href='betting.php'>Movies</button></td></tr>";
         }
         if ($_SESSION['usergroup']=="User")
-                echo "<br><table><tr><td><button  onclick=location.href='betting.php'>Betting Game</button></td>";
+                echo "<br><table><tr><td><button  onclick=location.href='bet/betting.php'>Betting Game</button></td>";
         }
 else
         die("You must login");
