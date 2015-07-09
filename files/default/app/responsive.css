@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+img, embed, object, video {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+nav a, button, input {
+  min-width: 48px;
+  min-height: 48px;
+  width: 75%;
+  max-width: 90%;
+  max-height: 90%;
+  /*padding: 1.5em;*/
+  height: 1px;
+  color: #20416c;
+  font-size: 25pt;
+}
+  
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+ 
+a:link {
+    color: #FFFFFF;
+}
+
+a:hover {
+    color: #FFF9E6;
+}
+
+font {font-size:300%;
+  font-family: "Elephant";
+  color: white;
+}
+
+body {
+  margin-left: 2%;
+  margin-right: 2%;
+  background-color: #20416c;
+}
+
+[class|=compact] {
+  background-color:#FFFFFF;
+  color:#20416c;
+  height:150px;
+  width:300px;
+  font-size:40pt;
+}
+
