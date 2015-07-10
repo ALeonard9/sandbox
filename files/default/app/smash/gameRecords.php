@@ -27,7 +27,7 @@ if ($_SESSION['username'])
         echo "<tr><td>Game ID</td><td>Game Date</td><td>Winner</td></tr>";
 
                 foreach($queryopen as $item){
-                        echo "<tr><td>".($item['game_id']."</td><td>".$item['game_date']."</td><td>".$item['display_name']."</td></tr>");
+                        echo "<tr><td><a href='gameDetails.php?gameID=".($item['game_id']."'>".$item['game_id']."</a></td><td>".$item['game_date']."</td><td>".$item['display_name']."</td></tr>");
                 }
         echo "</table>";
         echo "</html>";

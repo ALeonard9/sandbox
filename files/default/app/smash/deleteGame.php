@@ -4,15 +4,15 @@ session_start();
 
 include '../connectToDB.php';
 
-$betID = $_GET['betID'];
+$gameID = $_GET['gameID'];
 
-$sql = "DELETE FROM `bet`.`history` WHERE `betID`='". $betID ."';";
+$sql = "DELETE FROM `smash`.`game` WHERE `game_id`='". $gameID ."';";
 
 
 if ($_SESSION['username'])
 	{
 		$db->exec($sql);
-		header("Location: betting.php");
+		header("Location: gameRecords.php");
 		exit;
 	}
 else
