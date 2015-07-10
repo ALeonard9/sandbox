@@ -7,10 +7,11 @@ $password = $_POST['password'];
 
 include 'connectToDB.php';
 
-$sql = "SELECT * FROM users WHERE userName = :username";
-
+$sql = "SELECT * FROM phplogin.users WHERE userName = :username";
+echo "Hi";
 if ($username&&$password)
 {
+	echo "Hi";
 		$query = $db->prepare($sql);
 		$query->execute(array(':username'=>$username));
 				    $row_count = $query->rowCount();
@@ -19,16 +20,19 @@ if ($username&&$password)
 					$dbpassword = $results['userPassword'];
 					$dbusergroup = $results['userGroup'];
 					$dbuserid = $results['userID'];
-					
+
 					if ($row_count>0)
 						{
 							if($dbusername==$username&&$dbpassword==$password)
 							{
-							#echo $results['userName']; 
+							#echo $results['userName'];
 							#echo "You're in! Click  <a href='pivot.php'>here</a> to enter.";
 							$_SESSION['username']=$dbusername;
 							$_SESSION['usergroup']=$dbusergroup;
 							$_SESSION['userid']=$dbuserid;
+							// echo $dbusername;
+							// echo $dbusergroup;
+							// echo $dbuserid;
 								header("Location: pivot.php");
 								exit;
 							}

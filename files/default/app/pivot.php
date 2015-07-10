@@ -10,7 +10,6 @@ echo "<!DOCTYPE html>
 </head>
 </html>";
 
-
 if ($_SESSION['username'])
         {
         if ($_SESSION['usergroup']=="Admin")
@@ -27,7 +26,7 @@ if ($_SESSION['username'])
         }
         if ($_SESSION['usergroup']=="User")
                 echo "<br><button class='compact'  onclick=location.href='bet/betting.php'>Betting Game</button></td>";
-        }
+
         if ($_SESSION['usergroup']=="Smash")
                 header("Location: smash/smash.php");
 
