@@ -30,6 +30,7 @@ if ($_SESSION['username'])
         }
         if ($_SESSION['usergroup']=="Smash")
                 header("Location: smash/smash.php");
+
         }
 else
         die("You must login");
