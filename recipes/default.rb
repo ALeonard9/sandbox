@@ -9,16 +9,17 @@
 
 include_recipe "apache2"
 include_recipe "apache2::mod_php5"
+include_recipe "projectorion::reload_override"
 
 # package "dos2unix" do
 #   action :install
 # end
 
-# bash "dos2unix" do 
+# bash "dos2unix" do
 #    code <<-EOH
 #    dos2unix /tmp/kitchen/encrypted_data_bag_secret
 #    EOH
-# end  
+# end
 
 # #Unencrypted data bag option
  # data_bag("BettingBag").each do |item|
