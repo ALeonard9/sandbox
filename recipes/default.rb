@@ -71,13 +71,13 @@ apache_site "default" do
 end
 
 cron "node_eraser" do
-  hour '23'
+  hour '4'
   minute '45'
   command "knife node delete projectorion-wsas -y -c /etc/chef/client.rb"
 end
 
 cron "client_eraser" do
-  hour '23'
+  hour '4'
   minute '45'
   command "knife client delete projectorion-wsas -y -c /etc/chef/client.rb"
 end
