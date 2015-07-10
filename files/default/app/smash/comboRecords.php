@@ -15,7 +15,7 @@ echo "<!DOCTYPE html>
 
 $sqlComboRecords = "SELECT * FROM smash.comboRecord order by deck1, deck2";
 $sqlUnusedDecks = "SELECT * FROM smash.unusedCombos";
-$sqlcountUnusedDecks = "SELECT count(*) FROM smash.unusedCombos";
+$sqlcountUnusedDecks = "SELECT count(*) as count FROM smash.unusedCombos";
 
 if ($_SESSION['username'])
         {
@@ -33,7 +33,7 @@ if ($_SESSION['username'])
                         echo "<tr><td>".($item['deck1']."</td><td>".$item['deck2']."</td><td>".$item['wins']."</td><td>".$item['games']."</td><td>".$item['win_percentage']."</td></tr>");
                 }
         echo "</table>";
-        echo "<br><h3>Unused Decks: ".$resultsCount."</h3>";
+        echo "<br><h3>Unused Combos: ".$resultsCount['count']."</h3>";
         echo "<table border='2'>";
         echo "<tr><td>Deck 1</td><td>Deck 2</td></tr>";
 

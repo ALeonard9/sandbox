@@ -29,4 +29,5 @@ else
 	{
 	die("You must login");
 	}
+echo"</font></head></html>";
 ?>

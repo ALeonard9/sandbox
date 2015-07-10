@@ -13,7 +13,7 @@ echo "<!DOCTYPE html>
 
 
 
-$sql = "SELECT * FROM smash.game g LEFT JOIN smash.users u ON g.winner_user = u.user_id order by game_date desc";
+$sql = "SELECT * FROM smash.game g LEFT JOIN smash.users u ON g.winner_user = u.user_id order by game_id desc";
 
 if ($_SESSION['username'])
         {
