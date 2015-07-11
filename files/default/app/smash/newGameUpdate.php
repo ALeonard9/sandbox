@@ -30,7 +30,7 @@ echo $sql;
 if ($_SESSION['username'])
 	{
 		$db->exec($sql);
-	header("Location: smash.php");
+	header("Location: gameDetails.php?gameID=".$item['game_id']);
 		exit;
 	}
 else

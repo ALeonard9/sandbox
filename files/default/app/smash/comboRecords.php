@@ -41,7 +41,7 @@ if ($_SESSION['username'])
                 foreach($querydecks as $item){
                         echo "<tr><td>".($item['deck1']."</td><td>".$item['deck2']."</td></tr>");
                 }
-        echo "</table>";
+        echo "</table><br><INPUT Type='button' VALUE='Back' onClick='history.go(-1);return true;'>";
 
         echo "</html>";
         #if ($_SESSION['usergroup']=='Admin')

@@ -29,7 +29,7 @@ if ($_SESSION['username'])
                 foreach($queryopen as $item){
                         echo "<tr><td><a href='gameDetails.php?gameID=".($item['game_id']."'>".$item['game_id']."</a></td><td>".$item['game_date']."</td><td>".$item['display_name']."</td></tr>");
                 }
-        echo "</table>";
+        echo "</table><br><INPUT Type='button' VALUE='Back' onClick='history.go(-1);return true;'>";
         echo "</html>";
         }
 else
