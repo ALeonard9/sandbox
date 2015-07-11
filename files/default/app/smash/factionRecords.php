@@ -29,8 +29,7 @@ if ($_SESSION['username'])
                 foreach($queryopen as $item){
                         echo "<tr><td>".($item['faction_name']."</td><td>".$item['wins']."</td><td>".$item['games']."</td><td>".$item['win_percentage']."</td></tr>");
                 }
-        echo "</table>";
-
+        echo "</table><br><INPUT Type='button' VALUE='Back' onClick='history.go(-1);return true;'>";
         echo "</html>";
         #if ($_SESSION['usergroup']=='Admin')
 

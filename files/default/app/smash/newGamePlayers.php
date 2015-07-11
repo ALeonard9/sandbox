@@ -22,21 +22,24 @@ if ($_SESSION['username'])
     <input type='hidden' name='gameid' value='".$gameid."'>";
     $x = 1;
     while($x <= $numPlayers) {
-        echo "<tr><td>User ".$x.":</td><td><select form='myForm' name='user".$x."'>";
+        echo "<tr><td>User ".$x.":</td><td><select form='myForm' name='user".$x."'>
+        <option disabled='disabled' selected='selected'>Select Player</option>";
         $sql = "select * from smash.users order by display_name";
         $queryopen = $db->query($sql);
         foreach($queryopen as $item){
                 echo "<option value=".($item['user_id'].">".$item['display_name']."</option>");
         };
         echo "</select></td></tr></br>
-        <tr><td>Deck 1:</td><td><select form='myForm' name='deck1".$x."'>";
+        <tr><td>Deck 1:</td><td><select form='myForm' name='deck1".$x."'>
+        <option disabled='disabled' selected='selected'>Select Deck</option>";
         $sql = "select * from smash.deck order by faction_name";
         $queryopen = $db->query($sql);
         foreach($queryopen as $item){
                 echo "<option value=".($item['deck_id'].">".$item['faction_name']."</option>");
         };
         echo "</select></td></tr></br>
-        <tr><td>Deck 2:</td><td><select form='myForm' name='deck2".$x."'>";
+        <tr><td>Deck 2:</td><td><select form='myForm' name='deck2".$x."'>
+        <option disabled='disabled' selected='selected'>Select Deck</option>";
         $sql = "select * from smash.deck order by faction_name";
         $queryopen = $db->query($sql);
         foreach($queryopen as $item){
