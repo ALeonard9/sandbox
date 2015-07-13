@@ -8,10 +8,8 @@ $password = $_POST['password'];
 include 'connectToDB.php';
 
 $sql = "SELECT * FROM phplogin.users WHERE userName = :username";
-echo "Hi";
 if ($username&&$password)
 {
-	echo "Hi";
 		$query = $db->prepare($sql);
 		$query->execute(array(':username'=>$username));
 				    $row_count = $query->rowCount();
