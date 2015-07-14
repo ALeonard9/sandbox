@@ -49,19 +49,19 @@ if ($_SESSION['username'])
     }
    }
     echo "</select></td></tr></br>
-		<tr><td><input type='submit' value='Submit'></td></form>
-		<td><INPUT Type='button' VALUE='Back' onClick='history.go(-1);return true;'></td></br>
-    <td><br><button class='compact' onclick=\"location.href='deleteGame.php?gameID=".$gameID."'\">Delete Game</button></td></tr
+		<tr><td><input type='submit' name='update' value='Submit'></td></form>
+		<td><input type='button' value='Back' onClick='history.go(-1);return true;'></td></br>
+    <td><br><input type='submit' name='delete' value='Delete'></td></tr
 	</table>";
-  echo "<br><table><tr><td>Player</td><td>Deck 1</td><td>Deck 2</td></tr>";
+  echo "<br><table><tr><td>Player </td><td>Deck 1 </td><td>Deck 2 </td></tr>";
   $query3 = $db->query($sql3);
-  echo "ATTENTION ".$query3;
   foreach($query3 as $stuff){
-    echo"<tr><td>".($stuff['user']."</td></tr>");
+    echo $stuff['user'];
     $user = nameUser($stuff['user']);
+    echo $user;
     $deck1 = nameDeck($stuff['deck1']);
     $deck2 = nameDeck($stuff['deck2']);
-
+    echo $deck1;
     echo "<tr><td>".($user."</td><td>".$deck1."</td><td>".$deck2."</td></tr>");
   }
 

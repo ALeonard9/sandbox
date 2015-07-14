@@ -6,7 +6,7 @@ include '../connectToDB.php';
 
 $gameID = $_GET['gameID'];
 
-$sql = "DELETE FROM `smash`.`game` WHERE `game_id`='". $gameID ."';";
+$sql = "DELETE FROM `smash`.`game` WHERE `game_id`='". $gameID ."'";
 echo $sql;
 
 if ($_SESSION['username'])
