@@ -8,9 +8,9 @@ include 'functions/functions.php';
 echo "<!DOCTYPE html>
 <html lang='en'>
 <head>
-        <link rel='icon' href='https://s3.amazonaws.com/leoninestudios/favicon.ico' type='image/x-icon' />
-        <link rel='stylesheet' type='text/css' href='../responsive.css' />
-        <title id='pageTitle'>Smash Tracker</title>
+        <title id='pageTitle'>Smash Tracker</title>";
+include('../header.php');
+echo "</head>
 <font>";
 
 $gameID = $_GET['gameID'];
@@ -49,19 +49,34 @@ if ($_SESSION['username'])
     }
    }
     echo "</select></td></tr></br>
-		<tr><td><input type='submit' name='update' value='Submit'></td></form>
-		<td><input type='button' value='Back' onClick='history.go(-1);return true;'></td></br>
-    <td><br><input type='submit' name='delete' value='Delete'></td></tr
-	</table>";
-  echo "<br><table><tr><td>Player </td><td>Deck 1 </td><td>Deck 2 </td></tr>";
+		<tr><td><input type='submit' name='update' value='Submit'></td>
+		<td><input type='button' value='Back' onClick='history.go(-1);return true;'></td>";
+  if ($_SESSION['usergroup']=="Admin")
+  {
+    echo "<td><input type='submit' name='delete' value='Delete'></td>";
+  }
+	echo "</tr></table></form>";
+  echo "<br><table><tr><td><u>Player </u></td><td><u>Deck 1 </u></td><td><u>Deck 2 </u></td></tr>";
   $query3 = $db->query($sql3);
   foreach($query3 as $stuff){
-    echo $stuff['user'];
-    $user = nameUser($stuff['user']);
-    echo $user;
-    $deck1 = nameDeck($stuff['deck1']);
-    $deck2 = nameDeck($stuff['deck2']);
-    echo $deck1;
+    $sql4 = "SELECT * FROM smash.users u where u.users_id=".$stuff['user'];
+    $query4 = $db->query($sql4);
+    $res = $query4->fetch();
+    $user = $res['display_name'];
+    $sql1 = "SELECT * FROM smash.deck d where d.deck_id=".$stuff['deck1'];
+    $query1 = $db->query($sql1);
+    $res1 = $query1->fetch();
+    $deck1 = $res1['faction_name'];
+    $sql5 = "SELECT * FROM smash.deck d where d.deck_id=".$stuff['deck2'];
+    $query5 = $db->query($sql5);
+    $res5 = $query5->fetch();
+    $deck2 = $res5['faction_name'];
+    // echo $stuff['user'];
+    // $user = nameUser($stuff['user']);
+    // echo $user;
+    // // $deck1 = nameDeck($stuff['deck1']);
+    // // $deck2 = nameDeck($stuff['deck2']);
+    // // echo $deck1;
     echo "<tr><td>".($user."</td><td>".$deck1."</td><td>".$deck2."</td></tr>");
   }
 

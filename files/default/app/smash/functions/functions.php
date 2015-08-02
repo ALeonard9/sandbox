@@ -1,8 +1,9 @@
 <?php
 include '../../connectToDB.php';
 
-function nameDeck($deck_id)
+function nameDeck($deck_id123)
   {
+    include '../../connectToDB.php';
     $sql1 = "SELECT * FROM smash.deck d where d.deck_id=".$deck_id123;
     $query1 = $db->query($sql1);
     $res = $query1->fetch();
