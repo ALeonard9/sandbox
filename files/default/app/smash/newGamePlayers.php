@@ -6,6 +6,17 @@ include '../connectToDB.php';
 include 'functions/functions.php';
 
 $numPlayers = $_POST['num_players'];
+$players = array();
+$u1 = $_POST['nuser1'];
+$u2 = $_POST['nuser2'];
+$u3 = $_POST['nuser3'];
+$u4 = $_POST['nuser4'];
+
+for ($x = 1; $x <= $numPlayers; $x++) {
+  ${'u'.$x} = $_POST['user'.$x];
+  array_push($players, ${'u'.$x});
+}
+shuffle($players);
 
 $sql2 = "SELECT deck_id FROM smash.deck";
 $decks = array();
@@ -21,9 +32,10 @@ echo "<!DOCTYPE html>
 <head>
         <title id='pageTitle'>Smash Tracker</title>";
 include('../header.php');
-echo "</head>
-</html>
+echo "</head><body>
+
 <font>";
+
 if ($_SESSION['username'])
 	{
     echo "
@@ -33,12 +45,16 @@ if ($_SESSION['username'])
     $x = 1;
     while($x <= $numPlayers) {
         echo "<tr><td>User ".$x.":</td><td><select form='myForm' name='user".$x."'>
-        <option disabled='disabled' selected='selected'>Select Player</option>";
+        <option disabled='disabled' >Select Player</option>";
         $sql = "select * from smash.users order by display_name";
         $queryopen = $db->query($sql);
         foreach($queryopen as $item){
-                echo "<option
-                value=".($item['user_id'].">".$item['display_name']."</option>");
+                echo "<option ";
+                if ($item['user_id'] == $players[$x])
+                {
+                  echo "selected='selected' ";
+                }
+                echo "value=".($item['user_id'].">".$item['display_name']."</option>");
         };
         echo "</select></td></tr></br>
         <tr><td>Deck 1:</td><td><select form='myForm' name='deck1".$x."'>
@@ -77,5 +93,5 @@ else
 	{
 	die("You must login");
 	}
-  echo"</font></html>";
+  echo"</font></body></html>";
 ?>

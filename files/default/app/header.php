@@ -1,4 +1,3 @@
-echo "
         <link rel='stylesheet' type='text/css' href='../responsive.css' />
         <link rel="apple-touch-icon" sizes="57x57" href="../apple-icon-57x57.png">
         <link rel="apple-touch-icon" sizes="60x60" href="../apple-icon-60x60.png">
@@ -13,7 +12,8 @@ echo "
         <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
         <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+        <meta name="apple-mobile-web-app-title" content="Leonine">
         <link rel="manifest" href="../manifest.json">
         <meta name="msapplication-TileColor" content="#ffffff">
         <meta name="msapplication-TileImage" content="../ms-icon-144x144.png">
-        <meta name="theme-color" content="#ffffff">";
+        <meta name="theme-color" content="#ffffff">
