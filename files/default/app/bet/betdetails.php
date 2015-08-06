@@ -7,9 +7,10 @@ include '../connectToDB.php';
 echo "<!DOCTYPE html>
 <html lang='en'>
 <head>
-        <link rel='stylesheet' type='text/css' href='../responsive.css' />
-        <title id='pageTitle'>LeoNine Studios</title>
-<font>";
+        <title id='pageTitle'>LeoNine Studios</title>";
+include('../header.php');
+
+echo "</head><font>";
 
 $betID = $_GET['betID'];
 

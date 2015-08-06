@@ -9,7 +9,7 @@ echo "<!DOCTYPE html>
 <head>
         <title id='pageTitle'>Smash Tracker</title>";
 include('../header.php');
-echo "</head>";
+echo "</head><font>";
 
 
 
