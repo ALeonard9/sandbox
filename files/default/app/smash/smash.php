@@ -5,11 +5,9 @@ session_start();
 echo "<!DOCTYPE html>
 <html lang='en'>
 <head>
-        <link rel='icon' href='https://s3.amazonaws.com/leoninestudios/favicon.ico' type='image/x-icon' />
-        <link rel='stylesheet' type='text/css' href='../responsive.css' />
-        <title id='pageTitle'>Smash Tracker</title>
-</head>
-</html>";
+        <title id='pageTitle'>Smash Tracker</title>";
+include('../header.php');
+echo "</head>";
 
 
 if ($_SESSION['username'])

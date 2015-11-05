@@ -7,9 +7,9 @@ include '../connectToDB.php';
 echo "<!DOCTYPE html>
 <html lang='en'>
 <head>
-        <link rel='stylesheet' type='text/css' href='../responsive.css' />
-        <title id='pageTitle'>Smash Tracker</title>
-<font>";
+        <title id='pageTitle'>Smash Tracker</title>";
+include('../header.php');
+echo "</head><font>";
 
 
 
