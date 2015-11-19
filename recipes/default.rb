@@ -7,13 +7,18 @@
 # All rights reserved - Do Not Redistribute
 #
 
-include_recipe 'apache2'
+include_recipe 'apache2::default'
 include_recipe 'apache2::mod_php5'
 include_recipe 'projectorion::reload_override'
 
-# Encrypted data bag option
-mysql_secret = Chef::EncryptedDataBagItem.load_secret(node['projectorion']['mysql']['secretpath'])
-item_data = Chef::EncryptedDataBagItem.load('projectorion-bag', 'projectorion', mysql_secret)
+packages = ['php-mysql', 'mysql']
+
+packages.each do |pkg|
+  package pkg
+end
+
+# mysql_secret = Chef::EncryptedDataBagItem.load_secret(node['projectorion']['mysql']['secretpath'])
+item_data = data_bag_item('projectorion-bag', 'projectorion')
 
 template '/var/www/cgi-bin/connectToDB.php' do
   source 'connectToDB.php.erb'
@@ -28,20 +33,23 @@ remote_directory '/var/www/cgi-bin' do
   source 'app'
 end
 
-bash 'install_mysql' do
-  user 'root'
-  code <<-EOH
-  yum install php-mysql php php-xml php-mcrypt php-mbstring php-cli mysql httpd -y
-  EOH
-end
+# bash 'install_mysql' do
+#   user 'root'
+#   code <<-EOH
+#   yum install php-mysql php php-xml php-mcrypt php-mbstring php-cli mysql httpd -y
+#   EOH
+# end
 
 service 'apache2' do
-  action :restart
+  action [:enable, :start]
 end
+# service 'apache2' do
+#   action :restart
+# end
 
-apache_site 'default' do
-  enable true
-end
+# apache_site 'default' do
+#   enable true
+# end
 
 cron 'node_eraser' do
   hour '4'
