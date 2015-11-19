@@ -7,4 +7,4 @@ long_description 'Installs/Configures Betting'
 
 version '2.0.6'
 
-depends 'apache2', '2.0.0'
+depends 'apache2'
