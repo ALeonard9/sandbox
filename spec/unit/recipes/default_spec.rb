@@ -24,8 +24,13 @@ describe 'projectorion::default' do
       expect(chef_run).to include_recipe('apache2::mod_php5')
       expect(chef_run).to include_recipe('projectorion::reload_override')
     end
+    it 'installs packages' do
+      expect(chef_run).to install_package('mysql')
+      expect(chef_run).to install_package('php-mysql')
+    end
     it 'restarts apache' do
-      expect(chef_run).to restart_service('apache2')
+      expect(chef_run).to start_service('apache2')
+      expect(chef_run).to enable_service('apache2')
     end
     it 'creates crons' do
       expect(chef_run).to create_cron('node_eraser')
