@@ -31,7 +31,7 @@ if ($username&&$password)
 							// echo $dbusername;
 							// echo $dbusergroup;
 							// echo $dbuserid;
-								header("Location: pivot.php");
+								header("Location: index.html");
 								exit;
 							}
 							else
