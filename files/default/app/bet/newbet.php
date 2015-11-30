@@ -9,17 +9,12 @@ echo "<!DOCTYPE html>
 <head>
         <title id='pageTitle'>LeoNine Studios</title>";
 include('../header.php');
-
-echo "</head><font>";
-
-
-
+echo "</head><body><div class='container'>";
+include('../navigation.php');
 
 if ($_SESSION['username'])
 	{
 	echo"
-	<!DOCTYPE html>
-	<html>
 	<form action='newbetupdate.php' id='myForm' method='POST'>	<table>
 		<tr><td>Description:</td><td><input type='text' name='description'></td></tr></br>
 		<tr><td>Amount:</td><td><input type='number' name='amount'></td></tr></br>
@@ -29,11 +24,13 @@ if ($_SESSION['username'])
 		<tr><td>Winner:</td><td><input type='text' name='winner'></td></tr></br>
 		<tr><td><input type='submit' value='Submit'></td></form>
 		<td><INPUT Type='button' VALUE='Back' onClick='history.go(-1);return true;'></td></tr></br>
-	</table></html>";
+	</table>";
 
 	}
 else
 	{
 	die("You must login");
 	}
+include('../footer.php');
+echo "</div></body></html>";
 ?>

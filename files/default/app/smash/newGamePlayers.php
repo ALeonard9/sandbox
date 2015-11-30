@@ -32,9 +32,8 @@ echo "<!DOCTYPE html>
 <head>
         <title id='pageTitle'>Smash Tracker</title>";
 include('../header.php');
-echo "</head><body>
-
-<font>";
+echo "</head><body><div class='container'>";
+include('../navigation.php');
 
 if ($_SESSION['username'])
 	{
@@ -90,8 +89,7 @@ if ($_SESSION['username'])
 	</table>";
 	}
 else
-	{
-	die("You must login");
-	}
-  echo"</font></body></html>";
+	{	die("You must login"); }
+include('../footer.php');
+echo "</div></body></html>";
 ?>

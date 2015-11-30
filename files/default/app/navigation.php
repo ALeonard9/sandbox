@@ -8,31 +8,32 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">LeoNineStudios</a>
+      <a class="navbar-brand" href="../index.php">LeoNineStudios</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li><a href="#">Dashboard</a></li>
+        <li><a href="../index.php">Dashboard</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Apps <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Betting</a></li>
-            <li><a href="#">Smash Up</a></li>
+            <li><a href="../bet/betting.php">Betting</a></li>
+            <li><a href="../smash/smash.php">Smash Up</a></li>
           </ul>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Trackers <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Movies</a></li>
+            <li><a href="../movies/movie.php">Movies</a></li>
             <li><a href="#">Travel</a></li>
             <li><a href="#">TV</a></li>
-            <li><a href="#">Video Games</a></li>
+            <li><a href="../videogame/videogame.php">Video Games</a></li>
           </ul>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Login</a></li>
+        <li><a href="../signin.html">Sign In</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container-fluid -->
 </nav>
+</div>

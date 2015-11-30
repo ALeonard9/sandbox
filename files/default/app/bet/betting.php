@@ -9,8 +9,8 @@ echo "<!DOCTYPE html>
 <head>
         <title id='pageTitle'>LeoNine Studios</title>";
 include('../header.php');
-
-echo "</head><font>";
+echo "</head><body><div class='container'>";
+include('../navigation.php');
 
 
 
@@ -62,7 +62,6 @@ if ($_SESSION['username'])
                 foreach($queryall as $item){
                         echo "<tr><td><a href='betdetails.php?betID=".($item['betID']."'>".$item['betDescription']."</a></td><td>$".abs($item['betAmount'])."</td><td>".$item['betStatus']."</td><td>".$item['betWinner']."</td><td>".substr($item['betDate'],5, 5)."</td></tr>");
                 }
-        echo "</html>";
         #if ($_SESSION['usergroup']=='Admin')
 
         #if ($_SESSION['usergroup']=='User')
@@ -70,5 +69,6 @@ if ($_SESSION['username'])
 else
         die("You must login");
 
-echo"</font></head></html>";
+include('../footer.php');
+echo "</div></body></html>";
 ?>
