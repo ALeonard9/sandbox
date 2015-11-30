@@ -2,7 +2,7 @@
 
 session_start();
 
-$username = $_POST['username'];
+$username = strtolower($_POST['username']);
 $password = $_POST['password'];
 
 include 'connectToDB.php';
