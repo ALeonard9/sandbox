@@ -81,11 +81,17 @@ echo "<!DOCTYPE html>
 						<ul class='nav navbar-nav navbar-right'>";
 						if ($_SESSION['username'])
 						{
-						echo "<li><a href='./logout.php'>Log Out</a></li>";
+							echo "<li class='dropdown'>
+								<a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Welcome " . $_SESSION['username'] . " <span class='caret'></span></a>
+								<ul class='dropdown-menu'>
+									<li><a href='./users/profile.php'>My Profile</a></li>
+									<li><a href='./users/logout.php''>Log Out</a></li>
+								</ul>
+							</li>";
 						}
 						else
 						{
-						echo "<li><a href='./signin.html'>Sign In</a></li>";
+						echo "<li><a href='./users/signin.php'>Sign In</a></li>";
 						}
 
 echo "</ul>
