@@ -31,7 +31,7 @@ if ($username&&$password)
 							// echo $dbusername;
 							// echo $dbusergroup;
 							// echo $dbuserid;
-								header("Location: index.html");
+								header("Location: index.php");
 								exit;
 							}
 							else

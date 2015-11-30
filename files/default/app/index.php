@@ -52,25 +52,25 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="#">LeoNineStudios</a>
+						<a class="navbar-brand" href="index.php">LeoNineStudios</a>
 					</div>
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">
-							<li><a href="#">Dashboard</a></li>
+							<li><a href="index.php">Dashboard</a></li>
 							<li class="dropdown">
 	              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Apps <span class="caret"></span></a>
 	              <ul class="dropdown-menu">
-	                <li><a href="#">Betting</a></li>
-									<li><a href="#">Smash Up</a></li>
+	                <li><a href="bet/betting.php">Betting</a></li>
+									<li><a href="smash/smash.php">Smash Up</a></li>
 	              </ul>
 	            </li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Trackers <span class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li><a href="#">Movies</a></li>
+									<li><a href="movies/movie.php">Movies</a></li>
 									<li><a href="#">Travel</a></li>
 									<li><a href="#">TV</a></li>
-									<li><a href="#">Video Games</a></li>
+									<li><a href="videogame/videogame.php">Video Games</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -80,23 +80,12 @@
 					</div><!--/.nav-collapse -->
 				</div><!--/.container-fluid -->
 			</nav>
-
-		<form action='login.php' method='POST'><font>
-			Username:</br>
-			<input type='text' name='username'></br>
-			Password:</br>
-			<input type='password' name='password'></br>
-		    </br>
-			<input type='submit' style="color:#20416c;" value='Log in'>
-		</font></form>
 	</div>
 
 	<!--================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="./js/vendor/jquery.min.js"><\/script>')</script>
 	<script src="./js/bootstrap.min.js"></script>
-	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 	<script src="./js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>

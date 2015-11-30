@@ -9,8 +9,8 @@ echo "<!DOCTYPE html>
 <head>
         <title id='pageTitle'>Smash Tracker</title>";
 include('../header.php');
-echo "</head>
-<font>";
+echo "</head><body><div class='container'>";
+include('../navigation.php');
 
 
 
@@ -51,5 +51,6 @@ if ($_SESSION['username'])
 else
         die("You must login");
 
-echo"</font></head></html>";
+include('../footer.php');
+echo "</div></body></html>";
 ?>

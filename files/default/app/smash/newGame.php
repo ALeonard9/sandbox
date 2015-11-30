@@ -8,7 +8,8 @@ echo "<html lang='en' xmlns='http://www.w3.org/1999/xhtml'>
 <head>
         <title id='pageTitle'>Smash Tracker</title>";
 include('../header.php');
-echo "</head><body>";
+echo "</head><body><div class='container'>";
+include('../navigation.php');
 
 if ($_SESSION['username'])
 	{
@@ -55,5 +56,6 @@ else
 	{
 	die("You must login");
 	}
-echo"</head></html>";
+include('../footer.php');
+echo "</div></body></html>";
 ?>

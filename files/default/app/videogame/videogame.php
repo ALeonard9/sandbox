@@ -7,9 +7,10 @@ include '../connectToDB.php';
 echo "<!DOCTYPE html>
 <html lang='en'>
 <head>
-        <link rel='stylesheet' type='text/css' href='../responsive.css' />
-        <title id='pageTitle'>LeoNine Studios</title>
-<font>";
+        <title id='pageTitle'>Smash Tracker</title>";
+include('../header.php');
+echo "</head><body><div class='container'>";
+include('../navigation.php');
 
 
 
@@ -52,9 +53,6 @@ if ($_SESSION['username'])
 else
         die("You must login");
 
-echo"</font></head></html>";
+include('../footer.php');
+echo "</div></body></html>";
 ?>
-
-
-	
-

@@ -7,10 +7,10 @@ include '../connectToDB.php';
 echo "<!DOCTYPE html>
 <html lang='en'>
 <head>
-        <link rel='icon' href='https://s3.amazonaws.com/leoninestudios/favicon.ico' type='image/x-icon' />
-        <link rel='stylesheet' type='text/css' href='../responsive.css' />
-        <title id='pageTitle'>Smash Tracker</title>
-<font>";
+        <title id='pageTitle'>Smash Tracker</title>";
+include('../header.php');
+echo "</head><body><div class='container'>";
+include('../navigation.php');
 
 
 
@@ -35,5 +35,6 @@ if ($_SESSION['username'])
 else
         die("You must login");
 
-echo"</font></head></html>";
+include('../footer.php');
+echo "</div></body></html>";
 ?>

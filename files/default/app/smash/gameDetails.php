@@ -10,8 +10,8 @@ echo "<!DOCTYPE html>
 <head>
         <title id='pageTitle'>Smash Tracker</title>";
 include('../header.php');
-echo "</head>
-<font>";
+echo "</head><body><div class='container'>";
+include('../navigation.php');
 
 $gameID = $_GET['gameID'];
 
@@ -80,12 +80,13 @@ if ($_SESSION['username'])
     echo "<tr><td>".($user."</td><td>".$deck1."</td><td>".$deck2."</td></tr>");
   }
 
-  echo "</table></html>";
+  echo "</table>";
 
 	}
 
 else
-	{
-	die("You must login");
-	}
+	{	die("You must login");}
+
+include('../footer.php');
+echo "</div></body></html>";
 ?>

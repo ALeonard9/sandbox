@@ -9,8 +9,8 @@ echo "<!DOCTYPE html>
 <head>
         <title id='pageTitle'>LeoNine Studios</title>";
 include('../header.php');
-
-echo "</head><font>";
+echo "</head><body><div class='container'>";
+include('../navigation.php');
 
 $betID = $_GET['betID'];
 
@@ -51,4 +51,7 @@ else
 	{
 	die("You must login");
 	}
+
+include('../footer.php');
+echo "</div></body></html>";
 ?>
