@@ -20,17 +20,16 @@ if ($_SESSION['username'])
         {
                 $queryopen = $db->query($sql);
 
-        echo "<br><h3>Games</h3>";
-        echo "<!DOCTYPE html>";
-        echo "<html>";
+        echo "<div class='container text-center'><h3>Games</h3>";
         echo "<table class='table table-hover table-striped'>";
         echo "<tr><td>Game ID</td><td>Game Date</td><td>Winner</td></tr>";
 
                 foreach($queryopen as $item){
                         echo "<tr><td><a href='gameDetails.php?gameID=".($item['game_id']."'>".$item['game_id']."</a></td><td>".$item['game_date']."</td><td>".$item['display_name']."</td></tr>");
                 }
-        echo "</table><br><INPUT Type='button' VALUE='Back' onClick='history.go(-1);return true;'>";
-        echo "</html>";
+        echo "</table><button class='btn btn-lg btn-inverse btn-block' onclick=location.href='smash.php'><span class='glyphicon glyphicon-tower'></span> Smash Home</button>
+        </div>";
+
         }
 else
         die("You must login");

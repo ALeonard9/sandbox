@@ -24,7 +24,7 @@ if ($_SESSION['username'])
                 $querygamesum = $db->query($sqlgamesum);
                          $resultsgamesum = $querygamesum->fetch(PDO::FETCH_ASSOC);
 
-        echo "<h1>Video game history</h1>";
+        echo "<div class='container text-center'><h1>Video game history</h1>";
         echo "<br><h3>Completed Games:".$resultsgamesum['Count']."</h3>";
         echo "<!DOCTYPE html>";
         echo "<html>";
@@ -34,7 +34,7 @@ if ($_SESSION['username'])
                 foreach($querycomplete as $item){
                         echo "<tr><td><a href='betdetails.php?betID=".($item['GameID']."'>".$item['Title']."</a></td><td>".$item['System']."</td><td>".$item['Series']."</td><td>".$item['Rating']."</td></tr>");
                 }
-        echo "</table>";
+        echo "</table></div>";
 
         // echo "<br><h3>History</h3>";
         // echo "<table class='table table-hover table-striped'>";

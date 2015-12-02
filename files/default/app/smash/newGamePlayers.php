@@ -13,7 +13,6 @@ $u3 = $_POST['nuser3'];
 $u4 = $_POST['nuser4'];
 
 for ($x = 1; $x <= $numPlayers; $x++) {
-  ${'u'.$x} = $_POST['user'.$x];
   array_push($players, ${'u'.$x});
 }
 shuffle($players);
@@ -49,7 +48,7 @@ if ($_SESSION['username'])
         $queryopen = $db->query($sql);
         foreach($queryopen as $item){
                 echo "<option ";
-                if ($item['user_id'] == $players[$x])
+                if ($item['user_id'] == $players[$x-1])
                 {
                   echo "selected='selected' ";
                 }

@@ -20,20 +20,16 @@ if ($_SESSION['username'])
         {
                 $queryopen = $db->query($sqlFactionRecords);
 
-        echo "<br><h3>Faction Records</h3>";
-        echo "<!DOCTYPE html>";
-        echo "<html>";
+        echo "<div class='container text-center'><h3>Faction Records</h3>";
         echo "<table class='table table-hover table-striped'>";
         echo "<tr><td>Faction</td><td>Wins</td><td>Total Games</td><td>Win Percentage</td></tr>";
 
                 foreach($queryopen as $item){
                         echo "<tr><td>".($item['faction_name']."</td><td>".$item['wins']."</td><td>".$item['games']."</td><td>".$item['win_percentage']."</td></tr>");
                 }
-        echo "</table><br><INPUT Type='button' VALUE='Back' onClick='history.go(-1);return true;'>";
-        echo "</html>";
-        #if ($_SESSION['usergroup']=='Admin')
+        echo "</table><button class='btn btn-lg btn-inverse btn-block' onclick=location.href='smash.php'><span class='glyphicon glyphicon-tower'></span> Smash Home</button>
+        </div>";
 
-        #if ($_SESSION['usergroup']=='User')
         }
 else
         die("You must login");
