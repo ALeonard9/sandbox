@@ -20,6 +20,7 @@ if ($_SESSION['username'])
                 echo "<div class='col-md-4'><button type='button' class='btn btn-inverse btn-lg btn-block' onclick=location.href='gameRecords.php'>View Games</button></div>";
                 echo "<div class='col-md-4'><button type='button' class='btn btn-inverse btn-lg btn-block' onclick=location.href='newGame.php'>Add new game</button></div>";
         }
+      }
 else
         die("You must login");
 

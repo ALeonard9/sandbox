@@ -12,7 +12,7 @@ include('../header.php');
 echo "</head><body><div class='container'>";
 include('../navigation.php');
 
-echo "Coming Soon!";
+echo "<div class='col-md-3'></div><div class='col-md-6'><h1>Coming Soon!</h1></div>";
 
 include('../footer.php');
 echo "</div></body></html>";
