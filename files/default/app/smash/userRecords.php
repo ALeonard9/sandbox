@@ -23,7 +23,7 @@ if ($_SESSION['username'])
         echo "<br><h3>User Records</h3>";
         echo "<!DOCTYPE html>";
         echo "<html>";
-        echo "<table border='2'>";
+        echo "<table class='table table-hover table-striped'>";
         echo "<tr><td>Name</td><td>Wins</td><td>Total Games</td><td>Win Percentage</td></tr>";
 
                 foreach($queryopen as $item){

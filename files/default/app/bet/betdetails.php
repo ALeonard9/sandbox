@@ -16,9 +16,9 @@ $betID = $_GET['betID'];
 
 $sql = "SELECT * FROM bet.history where betID=" . $betID;
 
-echo "<br><button class='compact' onclick=location.href='updatewinner.php?betID=".$betID."&winner=Adam'>Adam Wins!</button>";
-echo "<button class='compact' onclick=location.href='updatewinner.php?betID=".$betID."&winner=Soumya'>Soumya Wins!</button>";
-echo "<br><button class='compact' onclick=location.href='delete.php?betID=".$betID."'>Delete Bet</button>";
+echo "<div class='col-md-4'><button type='button' class='btn btn-inverse btn-lg btn-block' onclick=location.href='updatewinner.php?betID=".$betID."&winner=Adam'>Adam Wins!</button></div>";
+echo "<div class='col-md-4'><button type='button' class='btn btn-inverse btn-lg btn-block' onclick=location.href='updatewinner.php?betID=".$betID."&winner=Soumya'>Soumya Wins!</button></div>";
+echo "<div class='col-md-4'><button type='button' class='btn btn-inverse btn-lg btn-block'  onclick=location.href='delete.php?betID=".$betID."'>Delete Bet</button></div>";
 
 
 if ($_SESSION['username'])

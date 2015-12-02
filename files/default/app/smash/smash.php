@@ -12,22 +12,13 @@ include('../navigation.php');
 
 if ($_SESSION['username'])
         {
-        if ($_SESSION['usergroup']=="Admin")
+        if ($_SESSION['usergroup']=="Admin" || $_SESSION['usergroup']=="Smash")
                 {
-                echo "<br><button class='compact' onclick=location.href='userRecords.php'>View Users</button>";
-                echo "<br><button class='compact' onclick=location.href='factionRecords.php'>View Factions</button>";
-                echo "<br><button class='compact' onclick=location.href='comboRecords.php'>View Combos</button>";
-                echo "<br><button class='compact' onclick=location.href='gameRecords.php'>View Games</button>";
-                echo "<br><button class='compact' onclick=location.href='newGame.php'>Add new game</button>";
-        }
-        if ($_SESSION['usergroup']=="Smash")
-               {
-                echo "<br><button class='compact' onclick=location.href='userRecords.php'>View Users</button>";
-                echo "<br><button class='compact' onclick=location.href='factionRecords.php'>View Factions</button>";
-                echo "<br><button class='compact' onclick=location.href='comboRecords.php'>View Combos</button>";
-                echo "<br><button class='compact' onclick=location.href='gameRecords.php'>View Games</button>";
-                echo "<br><button class='compact' onclick=location.href='newGame.php'>Add new game</button>";
-              }
+                echo "<div class='col-md-4'><button type='button' class='btn btn-inverse btn-lg btn-block' onclick=location.href='userRecords.php'>View Users</button></div>";
+                echo "<div class='col-md-4'><button type='button' class='btn btn-inverse btn-lg btn-block' onclick=location.href='factionRecords.php'>View Factions</button></div>";
+                echo "<div class='col-md-4'><button type='button' class='btn btn-inverse btn-lg btn-block' onclick=location.href='comboRecords.php'>View Combos</button></div>";
+                echo "<div class='col-md-4'><button type='button' class='btn btn-inverse btn-lg btn-block' onclick=location.href='gameRecords.php'>View Games</button></div>";
+                echo "<div class='col-md-4'><button type='button' class='btn btn-inverse btn-lg btn-block' onclick=location.href='newGame.php'>Add new game</button></div>";
         }
 else
         die("You must login");

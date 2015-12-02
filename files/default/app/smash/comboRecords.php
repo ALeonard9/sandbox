@@ -27,7 +27,7 @@ if ($_SESSION['username'])
         echo "<br><h3>Combo Records</h3>";
         echo "<!DOCTYPE html>";
         echo "<html>";
-        echo "<table border='2'>";
+        echo "<table class='table table-hover table-striped'>";
         echo "<tr><td>Deck 1</td><td>Deck 2</td><td>Wins</td><td>Total Games</td><td>Win Percentage</td></tr>";
 
                 foreach($queryopen as $item){
@@ -35,7 +35,7 @@ if ($_SESSION['username'])
                 }
         echo "</table>";
         echo "<br><h3>Unused Combos: ".$resultsCount['count']."</h3>";
-        echo "<table border='2'>";
+        echo "<table class='table table-hover table-striped'>";
         echo "<tr><td>Deck 1</td><td>Deck 2</td></tr>";
 
                 foreach($querydecks as $item){

@@ -25,13 +25,10 @@ if ($_SESSION['username'])
                          $resultsgamesum = $querygamesum->fetch(PDO::FETCH_ASSOC);
 
         echo "<h1>Video game history</h1>";
-        // echo "<br><button onclick=location.href='quickbet.php?type=fart'>Quick Win S</button>";
-        // echo "<button onclick=location.href='quickbet.php?type=pick'>Quick Win A</button>";
-        // echo "<button onclick=location.href='newbet.php'>New Bet</button>";
         echo "<br><h3>Completed Games:".$resultsgamesum['Count']."</h3>";
         echo "<!DOCTYPE html>";
         echo "<html>";
-        echo "<table border='2'>";
+        echo "<table class='table table-hover table-striped'>";
         echo "<tr><td>Title</td><td>System</td><td>Series</td><td>Rating</td></tr>";
 
                 foreach($querycomplete as $item){
@@ -40,7 +37,7 @@ if ($_SESSION['username'])
         echo "</table>";
 
         // echo "<br><h3>History</h3>";
-        // echo "<table border='2'>";
+        // echo "<table class='table table-hover table-striped'>";
         // echo "<tr><td>Description</td><td>Amount</td><td>Status</td><td>Winner</td><td>Last Update</td></tr>";
         //         foreach($queryall as $item){
         //                 echo "<tr><td><a href='betdetails.php?betID=".($item['betID']."'>".$item['betDescription']."</a></td><td>$".abs($item['betAmount'])."</td><td>".$item['betStatus']."</td><td>".$item['betWinner']."</td><td>".substr($item['betDate'],5, 5)."</td></tr>");
