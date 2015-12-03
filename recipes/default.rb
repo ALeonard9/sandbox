@@ -11,7 +11,7 @@ include_recipe 'apache2::default'
 include_recipe 'apache2::mod_php5'
 include_recipe 'projectorion::reload_override'
 
-packages = ['php-mysql', 'mysql']
+packages = ['php-mysql', 'mysql', 'unzip']
 
 packages.each do |pkg|
   package pkg
@@ -29,9 +29,18 @@ template '/var/www/cgi-bin/connectToDB.php' do
            )
 end
 
-remote_directory '/var/www/cgi-bin' do
-  source 'app'
+remote_file "#{Chef::Config[:file_cache_path]}/projectorion-src.zip" do
+  source 'https://s3.amazonaws.com/leoninestudios/projectorion/projectorion-src.zip'
+  mode '0755'
+  action :create
 end
+
+execute 'unzip_source' do
+  command "unzip -u #{Chef::Config[:file_cache_path]}/projectorion-src.zip -d /var/www/"
+end
+# remote_directory '/var/www/cgi-bin' do
+#   source 'app'
+# end
 
 service 'apache2' do
   action [:enable, :start]
