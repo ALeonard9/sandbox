@@ -61,7 +61,7 @@ if ($_SESSION['username'])
       echo" </select>
     </div>
     <button class='btn btn-lg btn-inverse btn-block' name='update' type='submit'><span class='glyphicon glyphicon-ok-sign'></span> Submit</button>
-  	<button class='btn btn-lg btn-warning btn-block' onclick=location.href='gameRecords.php'><span class='glyphicon glyphicon-remove-sign'></span> Cancel</button>";
+  	<button class='btn btn-lg btn-warning btn-block' type='button' onclick=location.href='gameRecords.php'><span class='glyphicon glyphicon-remove-sign'></span> Cancel</button>";
 
   if ($_SESSION['usergroup']=="Admin")
   {
