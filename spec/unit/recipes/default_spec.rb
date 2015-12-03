@@ -27,6 +27,7 @@ describe 'projectorion::default' do
     it 'installs packages' do
       expect(chef_run).to install_package('mysql')
       expect(chef_run).to install_package('php-mysql')
+      expect(chef_run).to install_package('unzip')
     end
     it 'restarts apache' do
       expect(chef_run).to start_service('apache2')
@@ -37,7 +38,7 @@ describe 'projectorion::default' do
       expect(chef_run).to create_cron('client_eraser')
     end
     it 'creates a remote directory' do
-      expect(chef_run).to create_remote_directory('/var/www/cgi-bin')
+      expect(chef_run).to create_remote_file('/tmp/kitchen/cache/projectorion-src.zip')
     end
     it 'creates a template' do
       expect(chef_run).to create_template('/var/www/cgi-bin/connectToDB.php')
