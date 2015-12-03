@@ -9,8 +9,8 @@ echo "<!DOCTYPE html>
 <head>
         <title id='pageTitle'>Smash Tracker</title>";
 include('../header.php');
-echo "</head>
-<font>";
+echo "</head><body><div class='container'>";
+include('../navigation.php');
 
 
 
@@ -24,10 +24,8 @@ if ($_SESSION['username'])
                 $querydecks = $db->query($sqlUnusedDecks);
                 $querycountdecks = $db->query($sqlcountUnusedDecks);
                   $resultsCount = $querycountdecks->fetch(PDO::FETCH_ASSOC);
-        echo "<br><h3>Combo Records</h3>";
-        echo "<!DOCTYPE html>";
-        echo "<html>";
-        echo "<table border='2'>";
+        echo "<div class='container text-center'><h3>Combo Records</h3>";
+        echo "<table class='table table-hover table-striped'>";
         echo "<tr><td>Deck 1</td><td>Deck 2</td><td>Wins</td><td>Total Games</td><td>Win Percentage</td></tr>";
 
                 foreach($queryopen as $item){
@@ -35,21 +33,19 @@ if ($_SESSION['username'])
                 }
         echo "</table>";
         echo "<br><h3>Unused Combos: ".$resultsCount['count']."</h3>";
-        echo "<table border='2'>";
+        echo "<table class='table table-hover table-striped'>";
         echo "<tr><td>Deck 1</td><td>Deck 2</td></tr>";
 
                 foreach($querydecks as $item){
                         echo "<tr><td>".($item['deck1']."</td><td>".$item['deck2']."</td></tr>");
                 }
-        echo "</table><br><INPUT Type='button' VALUE='Back' onClick='history.go(-1);return true;'>";
+        echo "</table><button class='btn btn-lg btn-inverse btn-block' onclick=location.href='smash.php'><span class='glyphicon glyphicon-tower'></span> Smash Home</button>
+        </div>";
 
-        echo "</html>";
-        #if ($_SESSION['usergroup']=='Admin')
-
-        #if ($_SESSION['usergroup']=='User')
         }
 else
         die("You must login");
 
-echo"</font></head></html>";
+include('../footer.php');
+echo "</div></body></html>";
 ?>

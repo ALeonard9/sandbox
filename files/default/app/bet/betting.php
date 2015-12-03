@@ -9,8 +9,8 @@ echo "<!DOCTYPE html>
 <head>
         <title id='pageTitle'>LeoNine Studios</title>";
 include('../header.php');
-
-echo "</head><font>";
+echo "</head><body><div class='container'>";
+include('../navigation.php');
 
 
 
@@ -40,15 +40,12 @@ if ($_SESSION['username'])
                 $intro= "Soumya owes Adam";
                 $dbbalance *= -1;
                 }
-        #echo '<pre>', print_r($queryopen), '</pre>';
-        echo "<h1>".$intro.": $".$dbbalance."</h1>";
-        echo "<br><button class='compact' onclick=location.href='quickbet.php?type=fart'>Quick Win S</button>";
-        echo "<button class='compact' onclick=location.href='quickbet.php?type=pick'>Quick Win A</button>";
-        echo "<br><button class='compact' onclick=location.href='newbet.php'>New Bet</button>";
+        echo "<div class='container text-center'><h1>".$intro.": $".$dbbalance."</h1>";
+        echo "<div class='row'><div class='col-md-4'><button type='button' class='btn btn-inverse btn-lg btn-block' onclick=location.href='quickbet.php?type=fart'>Quick Win S</button></div>";
+        echo "<div class='col-md-4'><button type='button' class='btn btn-inverse btn-lg btn-block' onclick=location.href='quickbet.php?type=pick'>Quick Win A</button></div>";
+        echo "<div class='col-md-4'><button type='button' class='btn btn-inverse btn-lg btn-block' onclick=location.href='newbet.php'>New Bet</button></div></div>";
         echo "<br><h3>Open Bets</h3>";
-        echo "<!DOCTYPE html>";
-        echo "<html>";
-        echo "<table border='2'>";
+        echo "<table class='table table-hover table-striped'>";
         echo "<tr><td>Description</td><td>Amount</td><td>Last Update</td></tr>";
 
                 foreach($queryopen as $item){
@@ -56,13 +53,12 @@ if ($_SESSION['username'])
                 }
         echo "</table>";
 
-        echo "<br><h3>History</h3>";
-        echo "<table border='2'>";
+        echo "<h3>History</h3>";
+        echo "<table class='table table-hover table-striped'>";
         echo "<tr><td>Description</td><td>Amount</td><td>Status</td><td>Winner</td><td>Last Update</td></tr>";
                 foreach($queryall as $item){
                         echo "<tr><td><a href='betdetails.php?betID=".($item['betID']."'>".$item['betDescription']."</a></td><td>$".abs($item['betAmount'])."</td><td>".$item['betStatus']."</td><td>".$item['betWinner']."</td><td>".substr($item['betDate'],5, 5)."</td></tr>");
                 }
-        echo "</html>";
         #if ($_SESSION['usergroup']=='Admin')
 
         #if ($_SESSION['usergroup']=='User')
@@ -70,5 +66,6 @@ if ($_SESSION['username'])
 else
         die("You must login");
 
-echo"</font></head></html>";
+include('../footer.php');
+echo "</table></div></div></body></html>";
 ?>

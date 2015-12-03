@@ -13,7 +13,6 @@ $u3 = $_POST['nuser3'];
 $u4 = $_POST['nuser4'];
 
 for ($x = 1; $x <= $numPlayers; $x++) {
-  ${'u'.$x} = $_POST['user'.$x];
   array_push($players, ${'u'.$x});
 }
 shuffle($players);
@@ -32,66 +31,74 @@ echo "<!DOCTYPE html>
 <head>
         <title id='pageTitle'>Smash Tracker</title>";
 include('../header.php');
-echo "</head><body>
-
-<font>";
+echo "</head><body><div class='container'>";
+include('../navigation.php');
 
 if ($_SESSION['username'])
 	{
     echo "
-    <form action='newGameUpdate.php' method='POST' id='myForm'>	<table>
-    <input type='hidden' name='num_players' value='".$numPlayers."'>
-    <input type='hidden' name='gameid' value='".$gameid."'>";
+    <div class='col-md-3'></div><div class='col-md-6'>
+    <form class='form-signin' action='newGameUpdate.php' method='POST' id='myForm'>
+      <input type='hidden' name='num_players' value='".$numPlayers."'>
+      <input type='hidden' name='gameid' value='".$gameid."'>";
     $x = 1;
     while($x <= $numPlayers) {
-        echo "<tr><td>User ".$x.":</td><td><select form='myForm' name='user".$x."'>
-        <option disabled='disabled' >Select Player</option>";
-        $sql = "select * from smash.users order by display_name";
-        $queryopen = $db->query($sql);
-        foreach($queryopen as $item){
-                echo "<option ";
-                if ($item['user_id'] == $players[$x])
-                {
-                  echo "selected='selected' ";
-                }
-                echo "value=".($item['user_id'].">".$item['display_name']."</option>");
-        };
-        echo "</select></td></tr></br>
-        <tr><td>Deck 1:</td><td><select form='myForm' name='deck1".$x."'>
-        <option disabled='disabled' selected='selected'>Select Deck</option>";
-        $sql = "select * from smash.deck order by faction_name";
-        $queryopen = $db->query($sql);
-        foreach($queryopen as $item){
-                echo "<option ";
-                if ($item['deck_id'] == $decks[($x*2)+1])
-                {
-                  echo "selected='selected' ";
-                }
-                echo "value=".($item['deck_id'].">".$item['faction_name']."</option>");
-        }
-        echo "</select></td></tr></br>
-        <tr><td>Deck 2:</td><td><select form='myForm' name='deck2".$x."'>
-        <option disabled='disabled' selected='selected'>Select Deck</option>";
-        $sql = "select * from smash.deck order by faction_name";
-        $queryopen = $db->query($sql);
-        foreach($queryopen as $item){
-                echo "<option ";
-                if ($item['deck_id'] == $decks[($x*2)+2])
-                {
-                  echo "selected='selected' ";
-                }
-                echo "value=".($item['deck_id'].">".$item['faction_name']."</option>");
-        };
-        echo "</select></td></tr></br>";
+        echo "
+        <div class='form-group'>
+          <label for='user".$x."'>User ".$x."</label>
+          <select class='form-control' form='myForm' name='user".$x."'>
+            <option disabled='disabled'>Select Player</option>";
+            $sql = "select * from smash.users order by display_name";
+            $queryopen = $db->query($sql);
+            foreach($queryopen as $item){
+                    echo "<option ";
+                    if ($item['user_id'] == $players[$x-1])
+                    {
+                      echo "selected='selected' ";
+                    }
+                    echo "value=".($item['user_id'].">".$item['display_name']."</option>");
+            };
+
+        echo "</select></div>
+        <div class='form-group'>
+          <label for='deck1".$x."'>Deck 1</label>
+          <select class='form-control' form='myForm' name='deck1".$x."'>
+            <option disabled='disabled' selected='selected'>Select Deck</option>";
+            $sql = "select * from smash.deck order by faction_name";
+            $queryopen = $db->query($sql);
+            foreach($queryopen as $item){
+                    echo "<option ";
+                    if ($item['deck_id'] == $decks[($x*2)+1])
+                    {
+                      echo "selected='selected' ";
+                    }
+                    echo "value=".($item['deck_id'].">".$item['faction_name']."</option>");
+            };
+
+        echo "</select></div>
+        <div class='form-group'>
+          <label for='deck2".$x."'>Deck 2</label>
+          <select class='form-control' form='myForm' name='deck2".$x."'>
+            <option disabled='disabled' selected='selected'>Select Deck</option>";
+            $sql = "select * from smash.deck order by faction_name";
+            $queryopen = $db->query($sql);
+            foreach($queryopen as $item){
+                    echo "<option ";
+                    if ($item['deck_id'] == $decks[($x*2)+2])
+                    {
+                      echo "selected='selected' ";
+                    }
+                    echo "value=".($item['deck_id'].">".$item['faction_name']."</option>");
+            };
+        echo "</select></div>";
         $x++;
     }
-		echo"<tr><td><input type='submit' value='Submit'></td></form>
-		<td><INPUT Type='button' VALUE='Back' onClick='history.go(-1);return true;'></td></tr></br>
-	</table>";
+		echo"<button class='btn btn-lg btn-inverse btn-block' type='submit'><span class='glyphicon glyphicon-ok-sign'></span> Submit</button>
+    	<button class='btn btn-lg btn-warning btn-block' onClick='history.go(-1);return true;'><span class='glyphicon glyphicon-remove-sign'></span> Cancel</button>
+	</form></div>";
 	}
 else
-	{
-	die("You must login");
-	}
-  echo"</font></body></html>";
+	{	die("You must login"); }
+include('../footer.php');
+echo "</div></body></html>";
 ?>

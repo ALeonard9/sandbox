@@ -7,9 +7,10 @@ include '../connectToDB.php';
 echo "<!DOCTYPE html>
 <html lang='en'>
 <head>
-        <link rel='stylesheet' type='text/css' href='../responsive.css' />
-        <title id='pageTitle'>LeoNine Studios</title>
-<font>";
+        <title id='pageTitle'>Smash Tracker</title>";
+include('../header.php');
+echo "</head><body><div class='container'>";
+include('../navigation.php');
 
 
 
@@ -23,23 +24,20 @@ if ($_SESSION['username'])
                 $querygamesum = $db->query($sqlgamesum);
                          $resultsgamesum = $querygamesum->fetch(PDO::FETCH_ASSOC);
 
-        echo "<h1>Video game history</h1>";
-        // echo "<br><button onclick=location.href='quickbet.php?type=fart'>Quick Win S</button>";
-        // echo "<button onclick=location.href='quickbet.php?type=pick'>Quick Win A</button>";
-        // echo "<button onclick=location.href='newbet.php'>New Bet</button>";
+        echo "<div class='container text-center'><h1>Video game history</h1>";
         echo "<br><h3>Completed Games:".$resultsgamesum['Count']."</h3>";
         echo "<!DOCTYPE html>";
         echo "<html>";
-        echo "<table border='2'>";
+        echo "<table class='table table-hover table-striped'>";
         echo "<tr><td>Title</td><td>System</td><td>Series</td><td>Rating</td></tr>";
 
                 foreach($querycomplete as $item){
                         echo "<tr><td><a href='betdetails.php?betID=".($item['GameID']."'>".$item['Title']."</a></td><td>".$item['System']."</td><td>".$item['Series']."</td><td>".$item['Rating']."</td></tr>");
                 }
-        echo "</table>";
+        echo "</table></div>";
 
         // echo "<br><h3>History</h3>";
-        // echo "<table border='2'>";
+        // echo "<table class='table table-hover table-striped'>";
         // echo "<tr><td>Description</td><td>Amount</td><td>Status</td><td>Winner</td><td>Last Update</td></tr>";
         //         foreach($queryall as $item){
         //                 echo "<tr><td><a href='betdetails.php?betID=".($item['betID']."'>".$item['betDescription']."</a></td><td>$".abs($item['betAmount'])."</td><td>".$item['betStatus']."</td><td>".$item['betWinner']."</td><td>".substr($item['betDate'],5, 5)."</td></tr>");
@@ -52,9 +50,6 @@ if ($_SESSION['username'])
 else
         die("You must login");
 
-echo"</font></head></html>";
+include('../footer.php');
+echo "</div></body></html>";
 ?>
-
-
-	
-

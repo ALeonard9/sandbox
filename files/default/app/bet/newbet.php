@@ -9,31 +9,46 @@ echo "<!DOCTYPE html>
 <head>
         <title id='pageTitle'>LeoNine Studios</title>";
 include('../header.php');
-
-echo "</head><font>";
-
-
-
+echo "</head><body><div class='container'>";
+include('../navigation.php');
 
 if ($_SESSION['username'])
 	{
-	echo"
-	<!DOCTYPE html>
-	<html>
-	<form action='newbetupdate.php' id='myForm' method='POST'>	<table>
-		<tr><td>Description:</td><td><input type='text' name='description'></td></tr></br>
-		<tr><td>Amount:</td><td><input type='number' name='amount'></td></tr></br>
-    <tr><td>Status:</td><td><select name='status' form='myForm'>
-    <option selected='selected' value='Open'>Open</option>
-    <option value='Complete'>Complete</option></select></td></tr>
-		<tr><td>Winner:</td><td><input type='text' name='winner'></td></tr></br>
-		<tr><td><input type='submit' value='Submit'></td></form>
-		<td><INPUT Type='button' VALUE='Back' onClick='history.go(-1);return true;'></td></tr></br>
-	</table></html>";
+	echo "<div class='col-md-3'></div><div class='col-md-6'>
+	<form class='form-signin' action='newbetupdate.php' id='myForm' method='POST'>
+  <div class='form-group'>
+    <label for='description'>Description</label>
+    <input type='text' class='form-control' name='description' placeholder='Description'>
+  </div>
+  <div class='form-group'>
+    <label for='amount'>Amount</label>
+    <input type='number' class='form-control' name='amount' placeholder='Amount'>
+  </div>
+  <div class='form-group'>
+    <label for='status'>Status</label>
+    <select class='form-control' name='status' form='myForm'>
+      <option selected='selected' value='Open'>Open</option>
+      <option value='Complete'>Complete</option>
+    </select>
+  </div>
+  <div class='form-group'>
+    <label for='winner'>Winner</label>
+    <select class='form-control' name='winner' form='myForm'>
+      <option selected='selected' value=''>Winner</option>
+      <option value='Adam'>Adam</option>
+      <option value='Soumya'>Soumya</option>
+    </select>
+  </div>
+  <button class='btn btn-lg btn-inverse btn-block' type='submit'><span class='glyphicon glyphicon-ok-sign'></span> Submit</button>
+	<button class='btn btn-lg btn-danger btn-block' onClick='history.go(-1);return true;'><span class='glyphicon glyphicon-remove-sign'></span> Cancel</button>
+	</form>
+	</div>";
 
 	}
 else
 	{
 	die("You must login");
 	}
+include('../footer.php');
+echo "</div></body></html>";
 ?>

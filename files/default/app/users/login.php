@@ -2,10 +2,10 @@
 
 session_start();
 
-$username = $_POST['username'];
+$username = strtolower($_POST['username']);
 $password = $_POST['password'];
 
-include 'connectToDB.php';
+include '../connectToDB.php';
 
 $sql = "SELECT * FROM phplogin.users WHERE userName = :username";
 if ($username&&$password)
@@ -23,15 +23,10 @@ if ($username&&$password)
 						{
 							if($dbusername==$username&&$dbpassword==$password)
 							{
-							#echo $results['userName'];
-							#echo "You're in! Click  <a href='pivot.php'>here</a> to enter.";
 							$_SESSION['username']=$dbusername;
 							$_SESSION['usergroup']=$dbusergroup;
 							$_SESSION['userid']=$dbuserid;
-							// echo $dbusername;
-							// echo $dbusergroup;
-							// echo $dbuserid;
-								header("Location: pivot.php");
+								header("Location: ../index.php");
 								exit;
 							}
 							else
