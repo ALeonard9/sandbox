@@ -55,8 +55,8 @@ execute 'download composer' do
   not_if { ::File.directory?('/var/www/cgi-bin/composer/vendor') }
 end
 
-template '/var/www/cgi-bin/users/oauth.php' do
-  source 'oauth.php.erb'
+template '/var/www/cgi-bin/users/signin.php' do
+  source 'signin.php.erb'
   mode '0644'
   variables(google_client: item_data['google_client'],
             google_secret: item_data['google_secret']
