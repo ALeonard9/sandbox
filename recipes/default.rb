@@ -10,14 +10,16 @@
 execute 'update yum' do
   command 'yum update -y'
   notifies :run, 'execute[add rpm]', :immediately
+  not_if { ::File.exist?('/etc/yum.repos.d/webtatic.repo') }
 end
 
 execute 'add rpm' do
   command 'rpm -Uvh https://mirror.webtatic.com/yum/el6/latest.rpm'
   action :nothing
+  not_if { ::File.exist?('/etc/yum.repos.d/webtatic.repo') }
 end
 
-packages = ['php54w', 'php54w-mysql', 'php54w-pdo', 'mysql', 'unzip']
+packages = ['php55w', 'php55w-mysql', 'php55w-pdo', 'php55w-mcrypt', 'mysql', 'unzip']
 
 packages.each do |pkg|
   package pkg

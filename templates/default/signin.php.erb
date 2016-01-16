@@ -4,6 +4,10 @@ require_once '../composer/vendor/autoload.php';
 session_start();
 ob_start();
 
+if (isset($_SESSION['userid'])){
+  die('You are already signed in.');
+}
+
 include '../connectToDB.php';
 const CLIENT_ID = '<%= @google_client %>';
 const CLIENT_SECRET = '<%= @google_secret %>';
@@ -33,24 +37,31 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
   $cover_image_url = $me['cover']['coverPhoto']['url'];
   $profile_url = $me['url'];
 
-      $sql = "SELECT * FROM `phplogin`.`users` WHERE userName = '".$email."'";
+      $sql = "SELECT * FROM `orion`.`users` WHERE email = '".$email."'";
       $query = $db->query($sql);
       $row_count = $query->rowCount();
       	$results = $query->fetch(PDO::FETCH_ASSOC);
       if ($row_count>0){
-        $_SESSION['username']=$results['userName'];
-        $_SESSION['usergroup']=$results['userGroup'];
-        $_SESSION['userid']=$results['userID'];
+        $_SESSION['username']=$results['display_name'];
+        $_SESSION['email']= $results['email'];
+         if ($_SESSION['username']==''){
+           $_SESSION['username']=$_SESSION['email'];
+         }
+        $_SESSION['usergroup']=$results['user_group'];
+        $_SESSION['userid']=$results['id'];
           } else {
-        $sql1 = "INSERT INTO `phplogin`.`users` (`userName`, `userGroup`) VALUES ('".$email."', 'User')";
+        $sql1 = "INSERT INTO `orion`.`users` (`display_name`, `user_group`, `email`) VALUES ('".$name."', 'User', '".$email."')";
         $query = $db->query($sql1);
-        $sql2 = "SELECT * FROM `phplogin`.`users` WHERE userName = '".$email."'";
+        $sql2 = "SELECT * FROM `orion`.`users` WHERE email = '".$email."'";
         $query = $db->query($sql2);
           $results = $query->fetch(PDO::FETCH_ASSOC);
-          $_SESSION['username']=$results['userName'];
-          $_SESSION['usergroup']=$results['userGroup'];
-          $_SESSION['userid']=$results['userID'];
-
+          $_SESSION['username']=$results['display_name'];
+          $_SESSION['email'] = $results['email'];
+          if ($_SESSION['username']==''){
+            $_SESSION['username']=$_SESSION['email'];
+          }
+          $_SESSION['usergroup']=$results['user_group'];
+          $_SESSION['userid']=$results['id'];
       }
 
   if(isset($_SESSION['url']))
@@ -74,6 +85,9 @@ echo "</head><body><div class='container'>";
 include('../navigation.php');
 
 echo "<div class='col-md-3'></div><div class='col-md-6'>
+<div class='text-center'>
+<a class='login' href='" . $authUrl . "''><img src='../images/signin_button.png' height='100px'/></a>
+<h2> - OR - </h2></div>
 <form class='form-signin' action='login.php' method='POST'>
 	<h2 class='form-signin-heading'>Please sign in</h2>
 	<label for='inputEmail' class='sr-only'>Email address</label>
@@ -83,8 +97,7 @@ echo "<div class='col-md-3'></div><div class='col-md-6'>
 	<br>
 	<button class='btn btn-lg btn-inverse btn-block' type='submit'><span class='glyphicon glyphicon-user'></span> Sign in</button>
 </form>
-<div class='text-center'><h2> - OR - </h2>
-<a class='login' href='" . $authUrl . "''><img src='../images/signin_button.png' height='100px'/></a></div>
+</br><button class='btn btn-lg btn-inverse btn-block' onclick=location.href='createprofile.php'><span class='glyphicon glyphicon-pencil'></span> Sign up</button>
   </div>";
 
 

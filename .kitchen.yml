@@ -18,6 +18,4 @@ suites:
       - recipe[projectorion::default]
     attributes:
       projectorion:
-        # mysql:
-        #   secretpath: '/tmp/kitchen/encrypted_data_bag_secret'
         servername: 'localhost'
