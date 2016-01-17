@@ -29,8 +29,10 @@ include_recipe 'apache2::default'
 include_recipe 'apache2::mod_php5'
 include_recipe 'projectorion::reload_override'
 
-# mysql_secret = Chef::EncryptedDataBagItem.load_secret(node['projectorion']['mysql']['secretpath'])
 item_data = data_bag_item('projectorion-bag', 'projectorion')
+
+node.default['projectorion']['tmdb_api_key'] = item_data['tmdb_api_key']
+node.default['projectorion']['igdb_api_key'] = item_data['igdb_api_key']
 
 template '/var/www/cgi-bin/connectToDB.php' do
   source 'connectToDB.php.erb'
@@ -39,6 +41,16 @@ template '/var/www/cgi-bin/connectToDB.php' do
             user: item_data['user'],
             userid: item_data['userid']
            )
+end
+
+template '/var/www/cgi-bin/movies/updateimg.php' do
+  source 'updateimg.php.erb'
+  mode '0644'
+end
+
+template '/var/www/cgi-bin/movies/addmovie.php' do
+  source 'addmovie.php.erb'
+  mode '0644'
 end
 
 remote_file "#{Chef::Config[:file_cache_path]}/projectorion-src.zip" do

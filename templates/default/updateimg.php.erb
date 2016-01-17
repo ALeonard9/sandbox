@@ -1,0 +1,21 @@
+<?php
+
+include '../connectToDB.php';
+$sql = "SELECT id, imdb from orion.movies";
+$update = "";
+$query = $db->query($sql);
+foreach($query as $item){
+  $api = "https://api.themoviedb.org/3/find/".$item['imdb']."?api_key=<%=node['projectorion']['tmdb_api_key'] %>&external_source=imdb_id";
+  $apiresponse =  file_get_contents($api);
+  $json = json_decode($apiresponse, true);
+  $poster_path =  $json['movie_results'][0]['poster_path'];
+  $poster = "https://image.tmdb.org/t/p/w185".$poster_path;
+  if ($poster == 'N/A') {
+  	$poster = 'https://upload.wikimedia.org/wikipedia/en/f/f9/No-image-available.jpg';
+  }
+  $update .= "UPDATE orion.movies SET `poster_url`='".$poster."' WHERE id = '".$item['id']."';";
+
+}
+echo $update;
+// $db->query($update);
+?>
