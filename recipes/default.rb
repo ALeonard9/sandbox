@@ -43,16 +43,6 @@ template '/var/www/cgi-bin/connectToDB.php' do
            )
 end
 
-template '/var/www/cgi-bin/movies/updateimg.php' do
-  source 'updateimg.php.erb'
-  mode '0644'
-end
-
-template '/var/www/cgi-bin/movies/addmovie.php' do
-  source 'addmovie.php.erb'
-  mode '0644'
-end
-
 remote_file "#{Chef::Config[:file_cache_path]}/projectorion-src.zip" do
   source 'https://s3.amazonaws.com/leoninestudios/projectorion/projectorion-src.zip'
   mode '0755'
@@ -75,6 +65,16 @@ template '/var/www/cgi-bin/users/signin.php' do
   variables(google_client: item_data['google_client'],
             google_secret: item_data['google_secret']
            )
+end
+
+template '/var/www/cgi-bin/movies/updateimg.php' do
+  source 'updateimg.php.erb'
+  mode '0644'
+end
+
+template '/var/www/cgi-bin/movies/addmovie.php' do
+  source 'addmovie.php.erb'
+  mode '0644'
 end
 
 service 'apache2' do
