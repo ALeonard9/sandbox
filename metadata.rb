@@ -2,9 +2,10 @@ name 'projectorion'
 maintainer 'Adam Leonard'
 maintainer_email 'LeoNineStudios@outlook.com'
 license 'All rights reserved'
-description 'Installs/Configures Betting'
-long_description 'Installs/Configures Betting'
+description 'Installs/Configures aleonard.us'
+long_description 'Installs/Configures aleonard.us'
 
-version '2.1.5'
+version '2.2.3'
 
 depends 'apache2'
+depends 'selinux'

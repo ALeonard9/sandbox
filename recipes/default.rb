@@ -7,6 +7,8 @@
 # All rights reserved - Do Not Redistribute
 #
 
+include_recipe 'selinux::permissive'
+
 execute 'update yum' do
   command 'yum update -y'
   notifies :run, 'execute[add rpm]', :immediately
@@ -14,12 +16,20 @@ execute 'update yum' do
 end
 
 execute 'add rpm' do
-  command 'rpm -Uvh https://mirror.webtatic.com/yum/el6/latest.rpm'
+  command 'rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm'
+  action :nothing
+  notifies :run, 'execute[add rpm2]', :immediately
+  not_if { ::File.exist?('/etc/yum.repos.d/webtatic.repo') }
+end
+
+execute 'add rpm2' do
+  command 'rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm'
   action :nothing
   not_if { ::File.exist?('/etc/yum.repos.d/webtatic.repo') }
 end
 
-packages = ['php55w', 'php55w-mysql', 'php55w-pdo', 'php55w-mcrypt', 'mysql', 'unzip']
+packages = ['php55w', 'php55w-mysql', 'php55w-pdo', 'php55w-mcrypt', 'mariadb', 'unzip']
+# packages = ['php-mysql', 'php', 'unzip', 'mariadb']
 
 packages.each do |pkg|
   package pkg
@@ -50,7 +60,7 @@ remote_file "#{Chef::Config[:file_cache_path]}/projectorion-src.zip" do
 end
 
 execute 'unzip_source' do
-  command "unzip -u #{Chef::Config[:file_cache_path]}/projectorion-src.zip -d /var/www/"
+  command "unzip -o -u #{Chef::Config[:file_cache_path]}/projectorion-src.zip -d /var/www/"
 end
 
 execute 'download composer' do
