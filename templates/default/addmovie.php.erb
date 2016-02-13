@@ -6,6 +6,7 @@ ob_start();
 include '../connectToDB.php';
 
 $imdbID = $_GET['imdbid'];
+$complete = $_GET['complete'];
 $movieTitle = urldecode($_GET['title']);
 $api = "https://api.themoviedb.org/3/find/".$imdbID."?api_key=<%=node['projectorion']['tmdb_api_key'] %>&external_source=imdb_id";
 $apiresponse =  file_get_contents($api);
@@ -34,12 +35,22 @@ if ( !$row){
 
 if (isset($_SESSION['userid']))
 	{
-		$stmt = $db->prepare("INSERT INTO orion.g_user_movies (`user_id`, `movies_id`, `rank`, `completed`) VALUES (:user, :row, '0', '1')");
+		$stmt = $db->prepare("INSERT INTO orion.g_user_movies (`user_id`, `movies_id`, `rank`, `completed`) VALUES (:user, :row, '0', :complete)");
 		$stmt->bindParam(':user', $user_id);
 		$stmt->bindParam(':row', $movie_id);
+		$stmt->bindParam(':complete', $complete);
 		$stmt->execute();
-		header("Location: movie.php");
-		exit;
+
+		if ($complete == 0)
+		{
+			header("Location: watchlist.php");
+			exit;
+		}
+		else
+		{
+			header("Location: movie.php");
+			exit;
+		}
 	}
 else
 	{
