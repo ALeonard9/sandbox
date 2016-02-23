@@ -3,6 +3,7 @@ driver:
   name: vagrant
   network:
   - ['forwarded_port' , {guest: 80, host: 80}]
+  - ['forwarded_port' , {guest: 8080, host: 8080}]
 
 provisioner:
   name: chef_zero
@@ -16,6 +17,7 @@ suites:
     encrypted_data_bag_secret_key_path: './../../encrypted_data_bag_secret'
     run_list:
       - recipe[projectorion::default]
+      - recipe[projectorion::jenkins]
     attributes:
       projectorion:
         servername: 'localhost'
