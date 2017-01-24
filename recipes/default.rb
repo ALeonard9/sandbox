@@ -39,6 +39,13 @@ include_recipe 'apache2::default'
 include_recipe 'apache2::mod_php5'
 include_recipe 'projectorion::reload_override'
 
+file '/etc/httpd/conf-enabled/orion.conf' do
+  content 'LimitRequestLine 10000'
+  mode '0755'
+  owner 'root'
+  group 'root'
+end
+
 item_data = data_bag_item('projectorion-bag', 'projectorion')
 
 node.default['projectorion']['tmdb_api_key'] = item_data['tmdb_api_key']
@@ -89,6 +96,12 @@ end
 
 service 'apache2' do
   action [:enable, :start]
+end
+
+cron 'updatetv' do
+  hour '4'
+  minute '45'
+  command '/bin/php /var/www/cgi-bin/tv/updatetv.php'
 end
 
 # Removed due to move to Google Cloud
