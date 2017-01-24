@@ -104,6 +104,12 @@ cron 'updatetv' do
   command 'cd /var/www/cgi-bin/tv && /bin/php /var/www/cgi-bin/tv/updatetv.php'
 end
 
+cron 'updateeps' do
+  hour '5'
+  minute '45'
+  command 'cd /var/www/cgi-bin/tv && /bin/php /var/www/cgi-bin/tv/updateepisodes.php'
+end
+
 # Removed due to move to Google Cloud
 # cron 'node_eraser' do
 #   hour '4'
