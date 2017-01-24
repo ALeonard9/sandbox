@@ -101,7 +101,7 @@ end
 cron 'updatetv' do
   hour '4'
   minute '45'
-  command '/bin/php /var/www/cgi-bin/tv/updatetv.php'
+  command 'cd /var/www/cgi-bin/tv && /bin/php /var/www/cgi-bin/tv/updatetv.php'
 end
 
 # Removed due to move to Google Cloud
