@@ -46,6 +46,20 @@ file '/etc/httpd/conf-enabled/orion.conf' do
   group 'root'
 end
 
+# if File.readlines('/etc/httpd/sites-available/default.conf').grep(/RewriteEngine/).size == 0
+  ruby_block 'insert_line' do
+    block do
+      file = Chef::Util::FileEdit.new('/etc/httpd/sites-available/default.conf')
+      file.search_file_delete_line("<\/VirtualHost>")
+      file.insert_line_if_no_match('RewriteEngine', 'RewriteEngine On')
+      file.insert_line_if_no_match('RewriteCond', 'RewriteCond %{HTTP:X-Forwarded-Proto} =http')
+      file.insert_line_if_no_match('RewriteRule', 'RewriteRule . https://%{HTTP:Host}%{REQUEST_URI} [L,R=permanent]')
+      file.insert_line_if_no_match('</VirtualHost>', '</VirtualHost>')
+      file.write_file
+    end
+  end
+# end
+
 item_data = data_bag_item('projectorion-bag', 'projectorion')
 
 node.default['projectorion']['tmdb_api_key'] = item_data['tmdb_api_key']
