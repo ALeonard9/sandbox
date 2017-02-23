@@ -1,27 +1,20 @@
-## projectorion
+# ALeonard.us Infrastructure/Platform
 
-This is a personal project available for use at [http://aleonard.us](http://aleonard.us "Title"). 
+This repository container the Chef cookbook for https://www.aleonard.us. This site serves as both the personal/ intro site for me, but also as my sandbox for several pet projects, including a 'SmashUp' companion app, a betting app, and tracking and ranking for movies, tv shows, videogames and countries visited. Check it out at https://www.aleonard.us/sandbox.php.
 
-### Technologies used:
-```
-*PHP
-*MySQL
-*Bootstrap
-*Javascript/Jquery
-*Chef
-*AWS/ Google Cloud
-```
+## Technology used
+* Chef
+* AWS
+* Ruby
 
-This particular repository holds the server configuration code. The application source code is available at: [https://github.com/LeoNineStudios/projectorion-src](https://github.com/LeoNineStudios/projectorion-src "Title")
+## Installation
 
-### Creating your own:
-1. Clone this repo.
-2. Create a databag with the appropriate material.
-3. Change the attributes in the attributes/default.rb file to match your environment.
-4. Clone the source code repo (above). 
-5. Make appropriate changes and save to publicly accessible location.
-6. Run chef-client from your node (assumes you have hooked into your own chef-server).
+Upload this cookbook to your chef server. Create a data bag/ database with the corresponding data. Converge the node recipe[aleonard::default].
 
-## Contributing:
-1. Fork this repo.
-2. Create a pull request.
+## Support
+
+Please [open an issue](https://github.com/ALeonard9/www.aleonard.us/issues/new) for support.
+
+## Contributing
+
+Please contribute using [Github Flow](https://guides.github.com/introduction/flow/). Create a branch, add commits, and open a pull request.
