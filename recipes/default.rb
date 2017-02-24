@@ -85,7 +85,7 @@ execute 'unzip_source' do
 end
 
 execute 'download composer' do
-  command 'curl -s https://getcomposer.org/installer | php && php composer.phar install'
+  command 'curl -s https://getcomposer.org/installer | php && /bin/php /var/www/cgi-bin/composer/composer.phar install'
   cwd '/var/www/cgi-bin/composer/'
   not_if { ::File.directory?('/var/www/cgi-bin/composer/vendor') }
 end
