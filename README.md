@@ -1,6 +1,6 @@
 ## projectorion
 
-This is a personal project available for use at [http://aleonard.us](http://aleonard.us "Title"). 
+This is a personal project available for use at [https://www.aleonard.us](http://www.aleonard.us "Title"). 
 
 ### Technologies used:
 ```
@@ -18,7 +18,7 @@ This particular repository holds the server configuration code. The application 
 1. Clone this repo.
 2. Create a databag with the appropriate material.
 3. Change the attributes in the attributes/default.rb file to match your environment.
-4. Clone the source code repo (above). 
+4. Clone the source code repo (above).
 5. Make appropriate changes and save to publicly accessible location.
 6. Run chef-client from your node (assumes you have hooked into your own chef-server).
 
