@@ -1,6 +1,6 @@
 # ALeonard.us Infrastructure/Platform
 
-This repository container the Chef cookbook for https://www.aleonard.us. This site serves as both the personal/ intro site for me, but also as my sandbox for several pet projects, including a 'SmashUp' companion app, a betting app, and tracking and ranking for movies, tv shows, videogames and countries visited. Check it out at https://www.aleonard.us/sandbox.php.
+This repository container the Chef cookbook for https://www.aleonard.us. This site serves as both the personal/ intro site for me, but also as my sandbox for several pet projects, including a 'SmashUp' companion app, a betting app, and tracking and ranking for movies, tv shows, videogames and countries visited. Check it out at https://www.aleonard.us/dashboard.php.
 
 ## Technology used
 * Chef
