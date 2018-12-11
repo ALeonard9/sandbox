@@ -5,7 +5,7 @@ license 'All rights reserved'
 description 'Installs/Configures aleonard.us'
 long_description 'Installs/Configures aleonard.us'
 
-version '2.2.7'
+version '2.2.8'
 
 depends 'apache2'
 depends 'selinux'

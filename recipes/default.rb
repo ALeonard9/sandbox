@@ -7,7 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 
-include_recipe 'selinux::permissive'
+include_recipe 'selinux::disabled'
 
 execute 'update yum' do
   command 'yum update -y'
@@ -36,7 +36,7 @@ packages.each do |pkg|
 end
 
 include_recipe 'apache2::default'
-include_recipe 'apache2::mod_php5'
+include_recipe 'apache2::mod_php'
 include_recipe 'projectorion::reload_override'
 
 file '/etc/httpd/conf-enabled/orion.conf' do
@@ -47,17 +47,17 @@ file '/etc/httpd/conf-enabled/orion.conf' do
 end
 
 # if File.readlines('/etc/httpd/sites-available/default.conf').grep(/RewriteEngine/).size == 0
-  ruby_block 'insert_line' do
-    block do
-      file = Chef::Util::FileEdit.new('/etc/httpd/sites-available/default.conf')
-      file.search_file_delete_line("<\/VirtualHost>")
-      file.insert_line_if_no_match('RewriteEngine', 'RewriteEngine On')
-      file.insert_line_if_no_match('RewriteCond', 'RewriteCond %{HTTP:X-Forwarded-Proto} =http')
-      file.insert_line_if_no_match('RewriteRule', 'RewriteRule . https://%{HTTP:Host}%{REQUEST_URI} [L,R=permanent]')
-      file.insert_line_if_no_match('</VirtualHost>', '</VirtualHost>')
-      file.write_file
-    end
+ruby_block 'insert_line' do
+  block do
+    file = Chef::Util::FileEdit.new('/etc/httpd/sites-available/default.conf')
+    file.search_file_delete_line("<\/VirtualHost>")
+    file.insert_line_if_no_match('RewriteEngine', 'RewriteEngine On')
+    file.insert_line_if_no_match('RewriteCond', 'RewriteCond %{HTTP:X-Forwarded-Proto} =http')
+    file.insert_line_if_no_match('RewriteRule', 'RewriteRule . https://%{HTTP:Host}%{REQUEST_URI} [L,R=permanent]')
+    file.insert_line_if_no_match('</VirtualHost>', '</VirtualHost>')
+    file.write_file
   end
+end
 # end
 
 item_data = data_bag_item('projectorion-bag', 'projectorion')
@@ -112,11 +112,11 @@ service 'apache2' do
   action [:enable, :start]
 end
 
-cron 'updatetv' do
-  hour '4'
-  minute '45'
-  command 'cd /var/www/cgi-bin/tv && /bin/php /var/www/cgi-bin/tv/updatetv.php'
-end
+# cron 'updatetv' do
+#   hour '4'
+#   minute '45'
+#   command 'cd /var/www/cgi-bin/tv && /bin/php /var/www/cgi-bin/tv/updatetv.php'
+# end
 
 cron 'updateeps' do
   hour '5'

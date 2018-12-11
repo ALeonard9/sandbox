@@ -1,0 +1,61 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: orion web server
+Resources:
+  orionWsSg:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: orion-web-sg
+      GroupDescription: Opens 80 and 443 to public
+      SecurityGroupIngress:
+        - CidrIp: 0.0.0.0/0
+          Description: SSH
+          FromPort: 22
+          IpProtocol: tcp
+          ToPort: 22
+        - CidrIp: 0.0.0.0/0
+          Description: HTTP
+          FromPort: 80
+          IpProtocol: tcp
+          ToPort: 80
+        - CidrIp: 0.0.0.0/0
+          Description: HTTPS
+          FromPort: 443
+          IpProtocol: tcp
+          ToPort: 443
+      VpcId: vpc-1735997e
+  orionWs:
+    Type: AWS::EC2::SpotFleet
+    DependsOn:
+      - orionWsSg
+    Properties:
+      SpotFleetRequestConfigData:
+        AllocationStrategy: lowestPrice
+        IamFleetRole: arn:aws:iam::371624369200:role/aws-ec2-spot-fleet-tagging-role
+        LaunchSpecifications:
+          - BlockDeviceMappings:
+              - DeviceName: "/dev/xvda"
+                Ebs:
+                  DeleteOnTermination: true
+                  VolumeType: "gp2"
+                  VolumeSize: 8
+                  SnapshotId: "snap-01fbb0f6c131f6e4d"
+            IamInstanceProfile:
+              Arn: arn:aws:iam::371624369200:instance-profile/orionRole-orionInstanceProfile-1E8GAGSGJBKMR
+            ImageId: ami-098e2c0c5d81fec98
+            InstanceType: t3.micro
+            KeyName: orion
+            SecurityGroups:
+              - GroupId: !Ref orionWsSg
+            SubnetId: "subnet-c45d9cbf, subnet-6e819b24, subnet-78db6411"
+            UserData:
+              Fn::Base64: !Sub |
+                #!/bin/bash -xe
+                systemctl start httpd
+                instanceid=`/usr/bin/curl -s http://169.254.169.254/latest/meta-data/instance-id`
+                aws ec2 associate-address --region ${AWS::Region} --instance-id $instanceid --public-ip 3.16.200.208 >> /tmp/log.log
+        SpotPrice: 0.0036
+        TargetCapacity: 1
+        TerminateInstancesWithExpiration: false
+        Type: maintain
+        ValidFrom: 2018-12-09T03:38:27Z
+        ValidUntil: 2022-12-09T03:38:27Z

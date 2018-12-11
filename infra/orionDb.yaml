@@ -1,0 +1,49 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: orion db
+Resources:
+  orionParameters:
+    Type: AWS::RDS::DBParameterGroup
+    Properties:
+      Description: orion-parameters
+      Family: mysql5.7
+      Parameters:
+        log_bin_trust_function_creators: 1
+  orionDbSg:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: orion-db-sg
+      GroupDescription: Opens 3306 to public
+      SecurityGroupIngress:
+        CidrIp: 0.0.0.0/0
+        Description: Mysql
+        FromPort: 3306
+        IpProtocol: tcp
+        ToPort: 3306
+      VpcId: vpc-1735997e
+  orionDb:
+    Type: AWS::RDS::DBInstance
+    DependsOn:
+      - orionDbSg
+      - orionParameters
+    Properties:
+      AllocatedStorage: 20
+      AllowMajorVersionUpgrade: true
+      AutoMinorVersionUpgrade: true
+      AvailabilityZone: us-east-2b
+      BackupRetentionPeriod: 4
+      CopyTagsToSnapshot: true
+      DBInstanceClass: db.t2.micro
+      DBInstanceIdentifier: orionrds
+      DBName: orion
+      DBParameterGroupName:
+        Ref: orionParameters
+      DeleteAutomatedBackups: true
+      DeletionProtection: true
+      Engine: mysql
+      EngineVersion: 5.7.23
+      MasterUsername: aleonard9
+      MasterUserPassword: replaceme
+      MultiAZ: false
+      PubliclyAccessible: true
+      VPCSecurityGroups:
+        - Ref: orionDbSg
